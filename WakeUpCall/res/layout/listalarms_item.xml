@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="horizontal">
+
+	<LinearLayout
+		android:id="@+id/listAlarmsLinearLayout"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:layout_alignParentLeft="true"
+		android:layout_centerVertical="true"
+		android:layout_toLeftOf="@+id/listAlarmsLinearLayout2"
+		android:gravity="center_vertical"
+		android:orientation="vertical">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text=""
+			android:textSize="12sp" />
+
+		<TextView
+			android:id="@+id/listAlarmsItemName"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text=""
+			android:textSize="20sp" />
+
+		<TextView
+			android:id="@+id/listAlarmsItemNextDate"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text=""
+			android:textSize="15sp" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text=""
+			android:textSize="12sp" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/listAlarmsLinearLayout2"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:layout_alignParentRight="true"
+		android:layout_centerVertical="true"
+		android:gravity="center_vertical"
+		android:orientation="vertical">
+
+		<CheckBox
+			android:id="@+id/listAlarmsItemCheckbox"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:focusable="false"
+			android:onClick="checkboxHandler"
+			android:text="" />
+
+	</LinearLayout>
+
+</RelativeLayout>

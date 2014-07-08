@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:padding="20dp">
+
+	<TextView
+		android:id="@+id/choosePlaylistTitle"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentTop="true"
+		android:text="@string/playlists"
+		android:textSize="30sp" />
+
+	<Button
+		android:id="@+id/choosePlaylistNewButton"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:background="@drawable/button1shape"
+		android:paddingLeft="12dp"
+		android:paddingRight="12dp"
+		android:text="@string/listPlaylistsNewPlaylistButtonText"
+		android:textColor="#FFFFFF" />
+
+	<ListView
+		android:id="@+id/choosePlaylistLV"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_below="@+id/choosePlaylistTitle"
+		android:layout_marginTop="40dp" />
+
+</RelativeLayout>
