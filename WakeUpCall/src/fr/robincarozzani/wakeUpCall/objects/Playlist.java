@@ -18,8 +18,8 @@ public class Playlist {
 	private int _id;
 	
 	public static Playlist createPlaylistInDB(String playlistName, ArrayList<Song> songs) {
-		int id = Database.getNewId("Playlist");
-		Database.executeNoResult("INSERT INTO " + PlaylistDB.TABLENAME + " VALUES(" + id + ", \"" + playlistName + "\")");
+		int id = Database.getNewId(PlaylistDB.TABLENAME);
+		Database.executeNoResult("INSERT INTO " + PlaylistDB.TABLENAME + " VALUES(" + id + ", \"" + playlistName + "\", " + calculateDuration(songs) + ")");
 		Playlist p = new Playlist(id);
 		p.saveSongs(songs);
 		return p;
@@ -69,20 +69,10 @@ public class Playlist {
 	}
 	
 	private int getDurationSeconds() {
-		int duration = 0;
-		MediaPlayer mp = new MediaPlayer();
-		try {
-			for (String path : getSongsPaths()) {
-				mp.setDataSource(path);
-				mp.prepare();
-				duration += mp.getDuration()/1000;
-				mp.reset();
-			}
-		} catch (IllegalArgumentException | SecurityException
-				| IllegalStateException | IOException e) {
-			e.printStackTrace();
-		} finally {
-			mp.release();
+		int duration = -1;
+		Cursor c = Database.executeWithResult("SELECT " + PlaylistDB.DURATION + " FROM " + PlaylistDB.TABLENAME + " WHERE " + PlaylistDB.ID + " = " + getId());
+		if (c.moveToFirst()) {
+			duration = c.getInt(0)/1000;
 		}
 		return duration;
 	}
@@ -106,8 +96,29 @@ public class Playlist {
 		return (sHours + " " + sMinutes + " " + sSeconds);
 	}
 	
+	private static int calculateDuration(ArrayList<Song> songs) {
+		int duration = 0;
+		MediaPlayer mp = new MediaPlayer();
+		try {
+			for (Song s : songs) {
+				mp.setDataSource(s.getPath());
+				mp.prepare();
+				duration += mp.getDuration();
+				mp.reset();
+			}
+		} catch (IllegalArgumentException | SecurityException
+				| IllegalStateException | IOException e) {
+			e.printStackTrace();
+		} finally {
+			mp.release();
+		}
+		return duration;
+	}
+	
 	public void updateInDB(String playlistName, ArrayList<Song> songs) {
-		Database.executeNoResult("UPDATE " + PlaylistDB.TABLENAME + " SET " + PlaylistDB.NAME + " = \"" + playlistName + "\" WHERE " + PlaylistDB.ID + " = " + getId());
+		Database.executeNoResult("UPDATE " + PlaylistDB.TABLENAME + " SET " + PlaylistDB.NAME + " = \"" + playlistName + "\", "
+																			+ PlaylistDB.DURATION + " = " + calculateDuration(songs) + " "
+																   + "WHERE " + PlaylistDB.ID + " = " + getId());
 		Database.executeNoResult("DELETE FROM " + PContainsDB.TABLENAME + " WHERE " + PContainsDB.PLAYLISTID + " = " + getId());
 		saveSongs(songs);
 	}
