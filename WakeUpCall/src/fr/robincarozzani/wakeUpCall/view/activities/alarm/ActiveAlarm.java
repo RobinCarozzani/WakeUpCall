@@ -147,6 +147,8 @@ public class ActiveAlarm extends Activity {
 					mPlayer.stop();
 					mPlayer.reset();
 					playNextSong();
+				} else {
+					mPlayer.release();
 				}
 			}
 		});

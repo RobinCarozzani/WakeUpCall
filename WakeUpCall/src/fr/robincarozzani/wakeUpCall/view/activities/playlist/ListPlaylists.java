@@ -36,7 +36,6 @@ public class ListPlaylists extends Activity {
     private List<Map<String, String>> data = new ArrayList<Map<String, String>>();
     private SimpleAdapter adapter;
     private ListView playlistsLV;
-
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -102,9 +101,9 @@ public class ListPlaylists extends Activity {
 		for (Playlist p : listPlaylists) {
 			int nbSongs = p.getNbSongs();
 			if (nbSongs > 1)
-				addItems(p.getName(), nbSongs + " " + getResources().getString(R.string.songs), ""+p.getId());
+				addItems(p.getName(), nbSongs + " " + getResources().getString(R.string.songs) + " - " + p.getDurationString(this), ""+p.getId());
 			else
-				addItems(p.getName(), nbSongs + " " + getResources().getString(R.string.song), ""+p.getId());
+				addItems(p.getName(), nbSongs + " " + getResources().getString(R.string.song) + " - " + p.getDurationString(this), ""+p.getId());
 		}
 	}
 	

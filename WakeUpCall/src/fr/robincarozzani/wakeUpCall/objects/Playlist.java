@@ -1,8 +1,12 @@
 package fr.robincarozzani.wakeUpCall.objects;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.database.Cursor;
+import android.media.MediaPlayer;
+import fr.robincarozzani.wakeUpCall.R;
 import fr.robincarozzani.wakeUpCall.constants.Values;
 import fr.robincarozzani.wakeUpCall.constants.db.AlarmDB;
 import fr.robincarozzani.wakeUpCall.constants.db.PContainsDB;
@@ -62,6 +66,44 @@ public class Playlist {
 	
 	public int getNbSongs() {
 		return getSongsPaths().size();
+	}
+	
+	private int getDurationSeconds() {
+		int duration = 0;
+		MediaPlayer mp = new MediaPlayer();
+		try {
+			for (String path : getSongsPaths()) {
+				mp.setDataSource(path);
+				mp.prepare();
+				duration += mp.getDuration()/1000;
+				mp.reset();
+			}
+		} catch (IllegalArgumentException | SecurityException
+				| IllegalStateException | IOException e) {
+			e.printStackTrace();
+		} finally {
+			mp.release();
+		}
+		return duration;
+	}
+	
+	public String getDurationString(Context c) {
+		int seconds = getDurationSeconds();
+		int hours = seconds/3600;
+		seconds -= 3600*hours;
+		int minutes = seconds/60;
+		seconds -= 60*minutes;
+		String sHours = "", sMinutes = "", sSeconds = "";
+		if (hours > 0) {
+			sHours = (hours>1) ? hours+" "+c.getResources().getString(R.string.hours) : hours+" "+c.getResources().getString(R.string.hour);
+		}
+		if (minutes > 0) {
+			sMinutes = (minutes>1) ? minutes+" "+c.getResources().getString(R.string.minutes) : hours+" "+c.getResources().getString(R.string.minute);
+		}
+		if (seconds > 0) {
+			sSeconds = (seconds>1) ? seconds+" "+c.getResources().getString(R.string.seconds) : hours+" "+c.getResources().getString(R.string.second);
+		}
+		return (sHours + " " + sMinutes + " " + sSeconds);
 	}
 	
 	public void updateInDB(String playlistName, ArrayList<Song> songs) {
