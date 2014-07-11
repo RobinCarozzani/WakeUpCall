@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -230,6 +231,15 @@ public class EditAlarm extends Activity {
 		repeatCB.setChecked(true);
 		vibrateCB = (CheckBox)findViewById(R.id.vibrateCheckbox);
 		vibrateCB.setChecked(false);
+		vibrateCB.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (vibrateCB.isChecked()) {
+					Vibrator vi = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+					vi.vibrate(1000);
+				}
+			}
+		});
 	}
 	
 	private void createSeekBar() {
