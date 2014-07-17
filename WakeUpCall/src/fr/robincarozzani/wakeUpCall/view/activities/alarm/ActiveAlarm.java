@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.KeyguardManager;
 import android.app.KeyguardManager.KeyguardLock;
 import android.content.Context;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
@@ -187,12 +188,17 @@ public class ActiveAlarm extends Activity {
 					int seconds = 0;
 					while ((minutes > 0) || (seconds > 0)) {
 						try {
-							final String min = (minutes<10) ? "0"+minutes : ""+minutes;
-							final String sec = (seconds<10) ? "0"+seconds : ""+seconds;
+							final int min = minutes;
+							final int sec = seconds;
+							final String minS = (minutes<10) ? "0"+minutes : ""+minutes;
+							final String secS = (seconds<10) ? "0"+seconds : ""+seconds;
 							mHandler.post(new Runnable() {
 								@Override
 								public void run() {
-									timeBeforeVibrateTV.setText(vibratorString + " - " + min + ":" + sec);
+									timeBeforeVibrateTV.setText(vibratorString + " - " + minS + ":" + secS);
+									if ((min == 0) && (sec < 10)) {
+										timeBeforeVibrateTV.setTextColor(Color.RED);
+									}
 								}
 							});
 							Thread.sleep(1000);
