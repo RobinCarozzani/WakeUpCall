@@ -23,6 +23,7 @@ import android.os.Vibrator;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import fr.robincarozzani.wakeUpCall.R;
 import fr.robincarozzani.wakeUpCall.constants.Keys;
@@ -51,11 +52,12 @@ public class ActiveAlarm extends Activity {
 	private AudioManager audio;
 	private int originalVolume;
 	private Vibrator v;
-	private Thread vibrateThread;
+	private Thread vibrateThread, songProgressThread;
 	
 	private TextView nameTV;
 	private TextView playlistTV;
 	private TextView songTV;
+	private ProgressBar songPB;
 	private TextView timeBeforeVibrateTV;
 	private Button dismissButton;
 
@@ -67,8 +69,10 @@ public class ActiveAlarm extends Activity {
 		Database.create(this);
 		getInfos();
 		createTextViews();
+		createProgressBar();
 		createButton();
 		setVolume();
+		songProgressThread = null;
 		createMediaPlayer();
 		v = null;
 		vibrateThread = null;
@@ -125,6 +129,10 @@ public class ActiveAlarm extends Activity {
 		timeBeforeVibrateTV = (TextView)findViewById(R.id.remainingTimeBeforeVibrateTV);
 	}
 	
+	private void createProgressBar() {
+		songPB = (ProgressBar)findViewById(R.id.songProgressBar);
+	}
+	
 	private void createButton() {
 		dismissButton = (Button)findViewById(R.id.activeAlarmDismissButton);
 		Utils.createTouchListener(this, dismissButton, R.drawable.button1shape, R.drawable.button1shapepressed);
@@ -162,6 +170,10 @@ public class ActiveAlarm extends Activity {
 	}
 	
 	private void playNextSong() {
+		if (songProgressThread != null) {
+			songProgressThread.interrupt();
+			songProgressThread = null;
+		}
 		if (currentSongIndex == songs.size()-1) currentSongIndex = -1;
 		playSong(songs.get(++currentSongIndex).getPath());
 		songTV.setText(getResources().getString(R.string.song) + ": " + songs.get(currentSongIndex).getName() + " (" + songs.get(currentSongIndex).getArtist() + ")");
@@ -172,9 +184,35 @@ public class ActiveAlarm extends Activity {
 	        mPlayer.setDataSource(path);
 	        mPlayer.prepare();
 	        mPlayer.start();
+	        manageProgressBar();
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
+	}
+
+	private void manageProgressBar() {
+		songPB.setMax(mPlayer.getDuration());
+		songPB.setProgress(0);
+		final Handler mHandler = new Handler();
+		songProgressThread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					while (mPlayer.getCurrentPosition() < mPlayer.getDuration()) {
+						mHandler.post(new Runnable() {
+							@Override
+							public void run() {
+								songPB.setProgress(mPlayer.getCurrentPosition());
+							}
+						});
+						Thread.sleep(10);
+					}
+				} catch (InterruptedException e) {
+					return;
+				}
+			}
+		});
+		songProgressThread.start();
 	}
 	
 	private void manageVibrator() {
@@ -237,8 +275,13 @@ public class ActiveAlarm extends Activity {
 	}
 	
 	private void end() {
+		if (songProgressThread != null) {
+			songProgressThread.interrupt();
+			songProgressThread = null;
+		}
 		if (vibrateThread != null) {
 			vibrateThread.interrupt();
+			vibrateThread = null;
 		}
 		if (v != null) {
 			v.cancel();
