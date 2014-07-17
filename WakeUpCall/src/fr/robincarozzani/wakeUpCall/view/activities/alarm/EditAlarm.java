@@ -37,7 +37,7 @@ public class EditAlarm extends Activity {
 	private final static int CHOSEDATEREQUESTCODE = 2;
 	
 	private Button saveButton, playlistButton, dateButton;
-	private EditText alarmNameET;
+	private EditText alarmNameET, vibrateTimeET;
 	private String alarmNameETContent;
 	private TimePicker timePicker;
 	private CheckBox repeatCB, vibrateCB;
@@ -49,6 +49,7 @@ public class EditAlarm extends Activity {
 	private int dateSelectionMode;
 	private Map<String, Integer> uniqueDate;
 	private boolean[] selectedDays;
+	private int vibrateDelay;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +59,9 @@ public class EditAlarm extends Activity {
 		alarm = null;
 		playlistId = NOPLAYLISTCHOSEN;
 		dateSelectionMode = NODATECHOSEN;
-		alarmNameET = (EditText)findViewById(R.id.editAlarmNameEditText);
 		uniqueDate = new HashMap<String, Integer>();
 		selectedDays = new boolean[7];
+		createEditTexts();
 		createTimePicker();
 		createButtons();
 		createCheckBoxes();
@@ -130,7 +131,10 @@ public class EditAlarm extends Activity {
 		if (b != null) {
 			alarm = new Alarm(b.getInt(Keys.ALARMID));
 			repeatCB.setChecked(alarm.isRepeat());
-			vibrateCB.setChecked(alarm.isVibrate());
+			boolean vibrator = alarm.isVibrate();
+			vibrateCB.setChecked(vibrator);
+			vibrateTimeET.setEnabled(vibrator);
+			vibrateTimeET.setText(""+alarm.getVibrateDelay());
 			volumeSB.setProgress(alarm.getVolume());
 			alarmNameET.setText(alarm.getName());
 			playlistId = alarm.getPlaylistId();
@@ -158,6 +162,13 @@ public class EditAlarm extends Activity {
 			    ((TextView)(findViewById(R.id.editAlarmChosenDate))).setText(dateString);
 			}
 		}
+	}
+	
+	private void createEditTexts() {
+		alarmNameET = (EditText)findViewById(R.id.editAlarmNameEditText);
+		vibrateTimeET = (EditText)findViewById(R.id.vibrateTimeEditText);
+		vibrateTimeET.setEnabled(false);
+		vibrateTimeET.setText(""+0);
 	}
 	
 	private void createButtons() {
@@ -192,11 +203,16 @@ public class EditAlarm extends Activity {
 				int minute = timePicker.getCurrentMinute();
 				uniqueDate.put(Keys.HOUR, hour);
 				uniqueDate.put(Keys.MINUTE, minute);
+				String vibrateDelayS = vibrateTimeET.getText().toString();
+				if (vibrateDelayS.equals("")) {
+					vibrateDelay = 0;
+				} else {
+					vibrateDelay = Integer.parseInt(vibrateDelayS);
+				}
 				saveInDB();
 				alarm.setActivated(true);
 				AlarmManagerHelper.setAlarm(EditAlarm.this, alarm);
 				alarm.displayRemainigTime(EditAlarm.this);
-				
 				finish();
 			}
 		});
@@ -235,8 +251,11 @@ public class EditAlarm extends Activity {
 			@Override
 			public void onClick(View v) {
 				if (vibrateCB.isChecked()) {
+					vibrateTimeET.setEnabled(true);
 					Vibrator vi = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 					vi.vibrate(1000);
+				} else {
+					vibrateTimeET.setEnabled(false);
 				}
 			}
 		});
@@ -252,10 +271,10 @@ public class EditAlarm extends Activity {
 	
 	private void saveInDB() {
 		if (alarm != null) {
-			alarm.updateInDB(alarmNameETContent, vibrateCB.isChecked(), true, selectedDays, dateSelectionMode==ChooseDate.REPEATDATECODE, repeatCB.isChecked(), playlistId, volumeSB.getProgress());
+			alarm.updateInDB(alarmNameETContent, vibrateCB.isChecked(), true, selectedDays, dateSelectionMode==ChooseDate.REPEATDATECODE, repeatCB.isChecked(), playlistId, volumeSB.getProgress(), vibrateDelay);
 			alarm.deleteDatesFromDB();
 		} else {
-			alarm = Alarm.createAlarmInDB(alarmNameETContent, vibrateCB.isChecked(), true, selectedDays, (dateSelectionMode==ChooseDate.REPEATDATECODE), repeatCB.isChecked(), playlistId, volumeSB.getProgress());		
+			alarm = Alarm.createAlarmInDB(alarmNameETContent, vibrateCB.isChecked(), true, selectedDays, (dateSelectionMode==ChooseDate.REPEATDATECODE), repeatCB.isChecked(), playlistId, volumeSB.getProgress(), vibrateDelay);		
 		}
 		saveAlarmDates();
 	}

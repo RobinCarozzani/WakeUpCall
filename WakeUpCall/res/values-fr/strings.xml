@@ -30,6 +30,7 @@
     <string name="time">Heure</string>
     <string name="repeat">En boucle</string>
     <string name="vibrate">Vibreur</string>
+    <string name="after">Après</string>
     <string name="alarmNameEmpty">Vous ne pouvez pas enregistrer une alarme sans nom</string>
     <string name="noPlaylistChosen">Vous ne pouvez pas enregistrer une alarme sans playlist</string>
     <string name="noDateChosen">Vous ne pouvez pas enregistrer une alarme sans date</string>

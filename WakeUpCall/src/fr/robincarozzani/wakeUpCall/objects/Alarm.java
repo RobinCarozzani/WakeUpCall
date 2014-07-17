@@ -24,7 +24,7 @@ public class Alarm {
 
 	private int _id;
 	
-	public static Alarm createAlarmInDB(String name, boolean vibrate, boolean activated, boolean[] selectedDays, boolean multipleDates, boolean repeat, int playlistId, int volume) {
+	public static Alarm createAlarmInDB(String name, boolean vibrate, boolean activated, boolean[] selectedDays, boolean multipleDates, boolean repeat, int playlistId, int volume, int vibrateDelay) {
 		int newAlarmId = Database.getNewId(AlarmDB.TABLENAME);
 		Database.executeNoResult("INSERT INTO " + AlarmDB.TABLENAME + " VALUES(" + newAlarmId + ", "
 																				 + "\"" + name + "\", "
@@ -42,7 +42,8 @@ public class Alarm {
 																				 + boolToInt(multipleDates) + ", "
 																				 + boolToInt(repeat) + ", "
 																				 + playlistId + ", "
-																				 + volume + ")"
+																				 + volume + ", "
+																				 + vibrateDelay + ")"
 								);
 		return new Alarm(newAlarmId);
 	}
@@ -93,6 +94,11 @@ public class Alarm {
 	public boolean isVibrate() {
 		Cursor c = Database.executeWithResult("SELECT " + AlarmDB.VIBRATE + " FROM " + AlarmDB.TABLENAME + " WHERE " + AlarmDB.ID + " = " + getId());
 		return (c.getInt(0) != Values.FALSE);
+	}
+	
+	public int getVibrateDelay() {
+		Cursor c = Database.executeWithResult("SELECT " + AlarmDB.VIBRATEDELAY + " FROM " + AlarmDB.TABLENAME + " WHERE " + AlarmDB.ID + " = " + getId());
+		return c.getInt(0);
 	}
 
 	public boolean isActivated() {
@@ -209,7 +215,7 @@ public class Alarm {
 		}
 	}
 	
-	public void updateInDB(String name, boolean vibrate, boolean activated, boolean[] selectedDays, boolean multipleDates, boolean repeat, int idPlaylist, int volume) {
+	public void updateInDB(String name, boolean vibrate, boolean activated, boolean[] selectedDays, boolean multipleDates, boolean repeat, int idPlaylist, int volume, int vibrateDelay) {
 		Database.executeNoResult("UPDATE " + AlarmDB.TABLENAME + " SET " + AlarmDB.NAME + " = \"" + name + "\", " +
 																		   AlarmDB.VIBRATE + " = " + boolToInt(vibrate) + ", " +
 																   	       AlarmDB.ACTIVATED + " = " + boolToInt(activated) + ", " +
@@ -223,7 +229,8 @@ public class Alarm {
 																   	       AlarmDB.MULTIPLEDATES + " = " + boolToInt(multipleDates) + ", " +
 																   	       AlarmDB.REPEAT + " = " + boolToInt(repeat) + ", " +
 																   	       AlarmDB.PLAYLISTID + " = " + idPlaylist + ", " +
-																   	       AlarmDB.VOLUME + " = " + volume + " " +
+																   	       AlarmDB.VOLUME + " = " + volume + ", " +
+																   	       AlarmDB.VIBRATEDELAY + " = " + vibrateDelay + " " +
 							     "WHERE " + AlarmDB.ID + " = " + getId());
 	}
 	

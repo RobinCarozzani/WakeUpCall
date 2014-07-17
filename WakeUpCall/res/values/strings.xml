@@ -30,6 +30,7 @@
     <string name="time">Time</string>
     <string name="repeat">Repeat</string>
     <string name="vibrate">Vibrate</string>
+    <string name="after">After</string>
     <string name="alarmNameEmpty">You can\'t save an alarm with no name</string>
     <string name="noPlaylistChosen">You can\'t save an alarm with no playlist</string>
     <string name="noDateChosen">You can\'t save an alarm with no date</string>

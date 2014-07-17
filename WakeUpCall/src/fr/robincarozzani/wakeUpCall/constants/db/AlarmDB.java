@@ -21,5 +21,6 @@ public class AlarmDB {
 	public static final String REPEAT = "repeat";
 	public static final String PLAYLISTID = "idPlaylist";
 	public static final String VOLUME = "volume";
+	public static final String VIBRATEDELAY = "vibrateDelay";
 
 }

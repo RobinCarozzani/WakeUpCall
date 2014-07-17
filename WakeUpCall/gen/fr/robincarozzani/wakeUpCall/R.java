@@ -994,7 +994,7 @@ containing a value of this type.
         public static final int volume_ico=0x7f020061;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f050062;
+        public static final int RelativeLayout1=0x7f050066;
         public static final int action_bar=0x7f05001c;
         public static final int action_bar_activity_content=0x7f050015;
         public static final int action_bar_container=0x7f05001b;
@@ -1007,79 +1007,79 @@ containing a value of this type.
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
         public static final int activeAlarmCurrentSongTV=0x7f05003e;
-        public static final int activeAlarmDismissButton=0x7f05003f;
+        public static final int activeAlarmDismissButton=0x7f050040;
         public static final int activeAlarmNameTV=0x7f05003c;
         public static final int activeAlarmPlaylistTV=0x7f05003d;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
         public static final int checkbox=0x7f05002d;
-        public static final int chooseDateRelLayout1=0x7f050068;
-        public static final int chooseDateTab1=0x7f050041;
-        public static final int chooseDateTab2=0x7f050042;
-        public static final int chooseDateTabHost=0x7f050040;
-        public static final int chooseDateToggleFri=0x7f05006d;
-        public static final int chooseDateToggleMon=0x7f050069;
-        public static final int chooseDateToggleSat=0x7f05006e;
-        public static final int chooseDateToggleSun=0x7f05006f;
-        public static final int chooseDateToggleThu=0x7f05006c;
-        public static final int chooseDateToggleTue=0x7f05006a;
-        public static final int chooseDateToggleWed=0x7f05006b;
-        public static final int chooseDateUniqueDatePicker=0x7f050071;
-        public static final int choosePlaylistLV=0x7f050045;
-        public static final int choosePlaylistNewButton=0x7f050044;
-        public static final int choosePlaylistTitle=0x7f050043;
-        public static final int chooseRepeatDateDoneButton=0x7f050070;
-        public static final int chooseUniqueDateDoneButton=0x7f050072;
+        public static final int chooseDateRelLayout1=0x7f05006c;
+        public static final int chooseDateTab1=0x7f050042;
+        public static final int chooseDateTab2=0x7f050043;
+        public static final int chooseDateTabHost=0x7f050041;
+        public static final int chooseDateToggleFri=0x7f050071;
+        public static final int chooseDateToggleMon=0x7f05006d;
+        public static final int chooseDateToggleSat=0x7f050072;
+        public static final int chooseDateToggleSun=0x7f050073;
+        public static final int chooseDateToggleThu=0x7f050070;
+        public static final int chooseDateToggleTue=0x7f05006e;
+        public static final int chooseDateToggleWed=0x7f05006f;
+        public static final int chooseDateUniqueDatePicker=0x7f050075;
+        public static final int choosePlaylistLV=0x7f050046;
+        public static final int choosePlaylistNewButton=0x7f050045;
+        public static final int choosePlaylistTitle=0x7f050044;
+        public static final int chooseRepeatDateDoneButton=0x7f050074;
+        public static final int chooseUniqueDateDoneButton=0x7f050076;
         public static final int collapseActionView=0x7f05000d;
         public static final int default_activity_button=0x7f050028;
         public static final int dialog=0x7f05000e;
         public static final int disableHome=0x7f050008;
         public static final int dropdown=0x7f05000f;
-        public static final int editAlarmChooseDateButton=0x7f050053;
-        public static final int editAlarmChoosePlaylistButton=0x7f05004c;
-        public static final int editAlarmChosenDate=0x7f050052;
-        public static final int editAlarmChosenPlaylist=0x7f05004b;
-        public static final int editAlarmDateLabel=0x7f050051;
-        public static final int editAlarmNameEditText=0x7f050049;
-        public static final int editAlarmNameLabel=0x7f050048;
-        public static final int editAlarmPlaylistsLabel=0x7f05004a;
-        public static final int editAlarmSaveButton=0x7f050047;
-        public static final int editAlarmTimeLabel=0x7f050054;
-        public static final int editAlarmTimePicker=0x7f050055;
-        public static final int editAlarmTitle=0x7f050046;
-        public static final int editPlayListDeleteButton=0x7f050076;
-        public static final int editPlayListDownButton=0x7f050075;
-        public static final int editPlayListItemName=0x7f050073;
-        public static final int editPlayListNameLabel=0x7f050057;
-        public static final int editPlayListTitle=0x7f050059;
-        public static final int editPlayListUpButton=0x7f050074;
-        public static final int editPlaylistAddSongsButton=0x7f05005c;
-        public static final int editPlaylistNameEditText=0x7f050056;
-        public static final int editPlaylistRemoveAllButton=0x7f05005d;
-        public static final int editPlaylistSaveButton=0x7f05005b;
-        public static final int editPlaylistSongsLabel=0x7f050058;
-        public static final int editPlaylistSongsListView=0x7f05005a;
+        public static final int editAlarmChooseDateButton=0x7f050057;
+        public static final int editAlarmChoosePlaylistButton=0x7f05004d;
+        public static final int editAlarmChosenDate=0x7f050056;
+        public static final int editAlarmChosenPlaylist=0x7f05004c;
+        public static final int editAlarmDateLabel=0x7f050055;
+        public static final int editAlarmNameEditText=0x7f05004a;
+        public static final int editAlarmNameLabel=0x7f050049;
+        public static final int editAlarmPlaylistsLabel=0x7f05004b;
+        public static final int editAlarmSaveButton=0x7f050048;
+        public static final int editAlarmTimeLabel=0x7f050058;
+        public static final int editAlarmTimePicker=0x7f050059;
+        public static final int editAlarmTitle=0x7f050047;
+        public static final int editPlayListDeleteButton=0x7f05007a;
+        public static final int editPlayListDownButton=0x7f050079;
+        public static final int editPlayListItemName=0x7f050077;
+        public static final int editPlayListNameLabel=0x7f05005b;
+        public static final int editPlayListTitle=0x7f05005d;
+        public static final int editPlayListUpButton=0x7f050078;
+        public static final int editPlaylistAddSongsButton=0x7f050060;
+        public static final int editPlaylistNameEditText=0x7f05005a;
+        public static final int editPlaylistRemoveAllButton=0x7f050061;
+        public static final int editPlaylistSaveButton=0x7f05005f;
+        public static final int editPlaylistSongsLabel=0x7f05005c;
+        public static final int editPlaylistSongsListView=0x7f05005e;
         public static final int edit_query=0x7f050030;
         public static final int end=0x7f050013;
         public static final int expand_activities_button=0x7f050026;
         public static final int expanded_menu=0x7f05002c;
         public static final int home=0x7f050014;
-        public static final int homeAlarmsButton=0x7f05005e;
+        public static final int homeAlarmsButton=0x7f050062;
         public static final int homeAsUp=0x7f050005;
-        public static final int homePlaylistsButton=0x7f05005f;
+        public static final int homePlaylistsButton=0x7f050063;
         public static final int icon=0x7f05002a;
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
-        public static final int listAlarmsItemCheckbox=0x7f05007b;
-        public static final int listAlarmsItemName=0x7f050079;
-        public static final int listAlarmsItemNextDate=0x7f05007a;
-        public static final int listAlarmsLinearLayout=0x7f050077;
-        public static final int listAlarmsLinearLayout2=0x7f050078;
+        public static final int listAlarmsItemCheckbox=0x7f05007f;
+        public static final int listAlarmsItemName=0x7f05007d;
+        public static final int listAlarmsItemNextDate=0x7f05007e;
+        public static final int listAlarmsLinearLayout=0x7f05007b;
+        public static final int listAlarmsLinearLayout2=0x7f05007c;
         public static final int listMode=0x7f050001;
-        public static final int listNewItemButton=0x7f050060;
+        public static final int listNewItemButton=0x7f050064;
         public static final int list_item=0x7f050029;
-        public static final int list_listview=0x7f050061;
+        public static final int list_listview=0x7f050065;
         public static final int middle=0x7f050012;
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
@@ -1087,7 +1087,8 @@ containing a value of this type.
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
-        public static final int repeatCheckbox=0x7f05004d;
+        public static final int remainingTimeBeforeVibrateTV=0x7f05003f;
+        public static final int repeatCheckbox=0x7f05004e;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
         public static final int search_button=0x7f050033;
@@ -1102,13 +1103,13 @@ containing a value of this type.
         public static final int showCustom=0x7f050007;
         public static final int showHome=0x7f050004;
         public static final int showTitle=0x7f050006;
-        public static final int songSelectorFilesListView=0x7f050066;
-        public static final int songsSelectorCurrentPath=0x7f050065;
-        public static final int songsSelectorDoneButton=0x7f050067;
-        public static final int songsSelectorFileIcon=0x7f05007c;
-        public static final int songsSelectorFileText=0x7f05007d;
-        public static final int songsSelectorInstructionTextView=0x7f050064;
-        public static final int songsSelectorSelectAllFilesButton=0x7f050063;
+        public static final int songSelectorFilesListView=0x7f05006a;
+        public static final int songsSelectorCurrentPath=0x7f050069;
+        public static final int songsSelectorDoneButton=0x7f05006b;
+        public static final int songsSelectorFileIcon=0x7f050080;
+        public static final int songsSelectorFileText=0x7f050081;
+        public static final int songsSelectorInstructionTextView=0x7f050068;
+        public static final int songsSelectorSelectAllFilesButton=0x7f050067;
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
@@ -1116,9 +1117,12 @@ containing a value of this type.
         public static final int top_action_bar=0x7f050020;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
-        public static final int vibrateCheckbox=0x7f05004e;
-        public static final int volumeImageview=0x7f05004f;
-        public static final int volumeSeekbar=0x7f050050;
+        public static final int vibrateCheckbox=0x7f05004f;
+        public static final int vibrateTimeEditText=0x7f050051;
+        public static final int vibrateTimeLabel1=0x7f050050;
+        public static final int vibrateTimeLabel2=0x7f050052;
+        public static final int volumeImageview=0x7f050053;
+        public static final int volumeSeekbar=0x7f050054;
         public static final int withText=0x7f05000c;
     }
     public static final class integer {
@@ -1227,15 +1231,16 @@ containing a value of this type.
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
         public static final int activationNotAllowed=0x7f0a0017;
-        public static final int add=0x7f0a0048;
+        public static final int add=0x7f0a0049;
+        public static final int after=0x7f0a0020;
         /**  EDIT ALARM 
  EDIT ALARM 
          */
         public static final int alarm=0x7f0a0019;
-        public static final int alarmIn=0x7f0a0023;
-        public static final int alarmNameEmpty=0x7f0a0020;
-        public static final int alarmsPlural=0x7f0a0041;
-        public static final int alarmsSingular=0x7f0a0040;
+        public static final int alarmIn=0x7f0a0024;
+        public static final int alarmNameEmpty=0x7f0a0021;
+        public static final int alarmsPlural=0x7f0a0042;
+        public static final int alarmsSingular=0x7f0a0041;
         /**  *** GENERAL *** 
  *** GENERAL *** 
          */
@@ -1244,23 +1249,23 @@ containing a value of this type.
         public static final int confirmation_delete=0x7f0a0011;
         public static final int confirmation_title=0x7f0a0010;
         public static final int date=0x7f0a001c;
-        public static final int day=0x7f0a0029;
-        public static final int days=0x7f0a0028;
-        public static final int deleteAlarmSingular=0x7f0a0042;
-        public static final int deleteAlarmsPlural=0x7f0a0043;
+        public static final int day=0x7f0a002a;
+        public static final int days=0x7f0a0029;
+        public static final int deleteAlarmSingular=0x7f0a0043;
+        public static final int deleteAlarmsPlural=0x7f0a0044;
         /**  ACTIVE ALARM 
  ACTIVE ALARM 
          */
-        public static final int dismiss=0x7f0a003b;
-        public static final int done=0x7f0a0050;
-        public static final int friday=0x7f0a0037;
+        public static final int dismiss=0x7f0a003c;
+        public static final int done=0x7f0a0051;
+        public static final int friday=0x7f0a0038;
         /**  HOME 
  HOME 
          */
         public static final int homeAlarmsButtonText=0x7f0a0012;
         public static final int homePlaylistsButtonText=0x7f0a0013;
-        public static final int hour=0x7f0a002b;
-        public static final int hours=0x7f0a002a;
+        public static final int hour=0x7f0a002c;
+        public static final int hours=0x7f0a002b;
         /**  *** ALARM *** 
  LIST ALARMS 
  *** ALARM *** 
@@ -1272,65 +1277,65 @@ containing a value of this type.
  *** PLAYLIST *** 
  LIST PLAYLISTS 
          */
-        public static final int listPlaylistsNewPlaylistButtonText=0x7f0a003c;
-        public static final int manyFilesAdded=0x7f0a0053;
-        public static final int minute=0x7f0a002d;
-        public static final int minutes=0x7f0a002c;
-        public static final int monday=0x7f0a0033;
-        public static final int month=0x7f0a0027;
-        public static final int months=0x7f0a0026;
-        public static final int name=0x7f0a0046;
+        public static final int listPlaylistsNewPlaylistButtonText=0x7f0a003d;
+        public static final int manyFilesAdded=0x7f0a0054;
+        public static final int minute=0x7f0a002e;
+        public static final int minutes=0x7f0a002d;
+        public static final int monday=0x7f0a0034;
+        public static final int month=0x7f0a0028;
+        public static final int months=0x7f0a0027;
+        public static final int name=0x7f0a0047;
         public static final int nameOfTheAlarm=0x7f0a001a;
-        public static final int nameOfThePlaylist=0x7f0a0047;
+        public static final int nameOfThePlaylist=0x7f0a0048;
         public static final int next=0x7f0a0015;
         public static final int nextAlarm=0x7f0a0018;
         public static final int no=0x7f0a000f;
-        public static final int noDateChosen=0x7f0a0022;
-        public static final int noFilesFound=0x7f0a0051;
-        public static final int noPlaylistChosen=0x7f0a0021;
+        public static final int noDateChosen=0x7f0a0023;
+        public static final int noFilesFound=0x7f0a0052;
+        public static final int noPlaylistChosen=0x7f0a0022;
         public static final int notActivated=0x7f0a0016;
-        public static final int oneFileAdded=0x7f0a0052;
-        public static final int pastDate=0x7f0a003a;
+        public static final int oneFileAdded=0x7f0a0053;
+        public static final int pastDate=0x7f0a003b;
         /**  EDIT PLAYLIST 
  EDIT PLAYLIST 
          */
-        public static final int playlist=0x7f0a0044;
-        public static final int playlistNameEmpty=0x7f0a004a;
-        public static final int playlistNoSongs=0x7f0a004b;
-        public static final int playlistSaved=0x7f0a004c;
-        public static final int playlistUsedIn=0x7f0a003f;
+        public static final int playlist=0x7f0a0045;
+        public static final int playlistNameEmpty=0x7f0a004b;
+        public static final int playlistNoSongs=0x7f0a004c;
+        public static final int playlistSaved=0x7f0a004d;
+        public static final int playlistUsedIn=0x7f0a0040;
         /**  CHOOSE PLAYLIST 
  CHOOSE PLAYLIST 
          */
-        public static final int playlists=0x7f0a0030;
-        public static final int removeAll=0x7f0a0049;
+        public static final int playlists=0x7f0a0031;
+        public static final int removeAll=0x7f0a004a;
         public static final int repeat=0x7f0a001e;
-        public static final int repeatDate=0x7f0a0032;
-        public static final int saturday=0x7f0a0038;
-        public static final int save=0x7f0a0045;
-        public static final int second=0x7f0a002f;
-        public static final int seconds=0x7f0a002e;
-        public static final int song=0x7f0a003d;
-        public static final int songs=0x7f0a003e;
-        public static final int songsSelectorAddAllFilesFromDirectory=0x7f0a004f;
+        public static final int repeatDate=0x7f0a0033;
+        public static final int saturday=0x7f0a0039;
+        public static final int save=0x7f0a0046;
+        public static final int second=0x7f0a0030;
+        public static final int seconds=0x7f0a002f;
+        public static final int song=0x7f0a003e;
+        public static final int songs=0x7f0a003f;
+        public static final int songsSelectorAddAllFilesFromDirectory=0x7f0a0050;
         /**  SONGS SELECTOR 
  SONGS SELECTOR 
          */
-        public static final int songsSelectorInstruction=0x7f0a004e;
-        public static final int sunday=0x7f0a0039;
-        public static final int thisFileAdded=0x7f0a0054;
-        public static final int thursday=0x7f0a0036;
+        public static final int songsSelectorInstruction=0x7f0a004f;
+        public static final int sunday=0x7f0a003a;
+        public static final int thisFileAdded=0x7f0a0055;
+        public static final int thursday=0x7f0a0037;
         public static final int time=0x7f0a001d;
-        public static final int tuesday=0x7f0a0034;
+        public static final int tuesday=0x7f0a0035;
         /**  CHOOSE DATE 
  CHOOSE DATE 
          */
-        public static final int uniqueDate=0x7f0a0031;
-        public static final int unknownArtist=0x7f0a004d;
+        public static final int uniqueDate=0x7f0a0032;
+        public static final int unknownArtist=0x7f0a004e;
         public static final int vibrate=0x7f0a001f;
-        public static final int wednesday=0x7f0a0035;
-        public static final int year=0x7f0a0025;
-        public static final int years=0x7f0a0024;
+        public static final int wednesday=0x7f0a0036;
+        public static final int year=0x7f0a0026;
+        public static final int years=0x7f0a0025;
         public static final int yes=0x7f0a000e;
     }
     public static final class style {

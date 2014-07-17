@@ -15,6 +15,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.Vibrator;
@@ -49,10 +50,12 @@ public class ActiveAlarm extends Activity {
 	private AudioManager audio;
 	private int originalVolume;
 	private Vibrator v;
+	private Thread vibrateThread;
 	
 	private TextView nameTV;
 	private TextView playlistTV;
 	private TextView songTV;
+	private TextView timeBeforeVibrateTV;
 	private Button dismissButton;
 
 	@Override
@@ -67,6 +70,7 @@ public class ActiveAlarm extends Activity {
 		setVolume();
 		createMediaPlayer();
 		v = null;
+		vibrateThread = null;
 		manageVibrator();
 		updateDB();
 		Utils.setNotification(this);
@@ -117,6 +121,7 @@ public class ActiveAlarm extends Activity {
 		playlistTV = (TextView)findViewById(R.id.activeAlarmPlaylistTV);
 		playlistTV.setText(getResources().getString(R.string.playlist) + ": " + playlist.getName());
 		songTV = (TextView)findViewById(R.id.activeAlarmCurrentSongTV);
+		timeBeforeVibrateTV = (TextView)findViewById(R.id.remainingTimeBeforeVibrateTV);
 	}
 	
 	private void createButton() {
@@ -173,9 +178,45 @@ public class ActiveAlarm extends Activity {
 	
 	private void manageVibrator() {
 		if (alarm.isVibrate()) {
-			v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
-			long[] pattern = {0, 1500, 1000};
-			v.vibrate(pattern, 0);
+			final String vibratorString = getResources().getString(R.string.vibrate);
+			final Handler mHandler = new Handler();
+			vibrateThread = new Thread(new Runnable() {	
+				@Override
+				public void run() {
+					int minutes = alarm.getVibrateDelay();
+					int seconds = 0;
+					while ((minutes > 0) || (seconds > 0)) {
+						try {
+							final String min = (minutes<10) ? "0"+minutes : ""+minutes;
+							final String sec = (seconds<10) ? "0"+seconds : ""+seconds;
+							mHandler.post(new Runnable() {
+								@Override
+								public void run() {
+									timeBeforeVibrateTV.setText(vibratorString + " - " + min + ":" + sec);
+								}
+							});
+							Thread.sleep(1000);
+							seconds--;
+							if (seconds < 0) {
+								seconds = 59;
+								minutes--;
+							}
+						} catch (InterruptedException e) {
+							return;
+						}
+					}
+					mHandler.post(new Runnable() {
+						@Override
+						public void run() {
+							timeBeforeVibrateTV.setText(vibratorString + " - 00:00");
+						}
+					});
+					v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+					long[] pattern = {0, 1500, 1000};
+					v.vibrate(pattern, 0);
+				}
+			});
+			vibrateThread.start();
 		}
 	}
 	
@@ -190,6 +231,9 @@ public class ActiveAlarm extends Activity {
 	}
 	
 	private void end() {
+		if (vibrateThread != null) {
+			vibrateThread.interrupt();
+		}
 		if (v != null) {
 			v.cancel();
 		}
