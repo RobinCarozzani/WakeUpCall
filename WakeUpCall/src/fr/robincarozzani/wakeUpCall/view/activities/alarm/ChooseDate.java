@@ -1,6 +1,7 @@
 package fr.robincarozzani.wakeUpCall.view.activities.alarm;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 import fr.robincarozzani.wakeUpCall.R;
 import fr.robincarozzani.wakeUpCall.constants.Keys;
+import fr.robincarozzani.wakeUpCall.objects.Alarm;
 import fr.robincarozzani.wakeUpCall.view.activities.Utils;
 
 public class ChooseDate extends Activity {
@@ -23,6 +25,7 @@ public class ChooseDate extends Activity {
 	
 	private TabHost tabHost;
 	private ToggleButton[] daysButtons;
+	private DatePicker uniqueDatePicker;
 	
 	private Intent returnIntent;
 	
@@ -34,6 +37,7 @@ public class ChooseDate extends Activity {
 		returnIntent = new Intent();
 		createTabs();
 		createButtons();
+		dealWithBundle();
 	}
 	
 	private void createTabs() {
@@ -50,6 +54,7 @@ public class ChooseDate extends Activity {
 	}
 	
 	private void createButtons() {
+		uniqueDatePicker = (DatePicker)findViewById(R.id.chooseDateUniqueDatePicker);
 		Button uniqueDoneButton = (Button)findViewById(R.id.chooseUniqueDateDoneButton);
 		Utils.createTouchListener(this, uniqueDoneButton, R.drawable.button2shape, R.drawable.button2shapepressed);
 		Button repeatDoneButton = (Button)findViewById(R.id.chooseRepeatDateDoneButton);
@@ -68,10 +73,9 @@ public class ChooseDate extends Activity {
 	}
 	
 	public void uniqueDone(View v) {
-		DatePicker dp = (DatePicker)findViewById(R.id.chooseDateUniqueDatePicker);
-		int day = dp.getDayOfMonth();
-		int month = dp.getMonth();
-		int year = dp.getYear();
+		int day = uniqueDatePicker.getDayOfMonth();
+		int month = uniqueDatePicker.getMonth();
+		int year = uniqueDatePicker.getYear();
 		Calendar c = Calendar.getInstance();
 		if ((year < c.get(Calendar.YEAR)) ||
 			((year == c.get(Calendar.YEAR)) && (month < c.get(Calendar.MONTH))) ||
@@ -110,4 +114,27 @@ public class ChooseDate extends Activity {
 		finish();
 	}
 
+	
+	private void dealWithBundle() {
+		Bundle b = getIntent().getExtras();
+		if (b != null) {
+			Alarm alarm = new Alarm(b.getInt(Keys.ALARMID));
+			if (alarm.hasMultipleDates()) {
+				tabHost.setCurrentTabByTag("repeat");
+				boolean[] currentSelectedDays = alarm.getSelectedDays();
+				for (int i=0 ; i<currentSelectedDays.length ; ++i) {
+					if (currentSelectedDays[i]) {
+						daysButtons[i].setChecked(true);
+						daysButtons[i].setBackground(getResources().getDrawable(R.drawable.button2shape));
+						Utils.createTouchListener(this, daysButtons[i], R.drawable.button2shape, R.drawable.button2shapepressed);
+					}
+				}
+			} else {
+				Date currentSetDate = alarm.getNextActivation();
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(currentSetDate);
+				uniqueDatePicker.updateDate(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
+			}
+		}
+	}
 }

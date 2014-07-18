@@ -229,7 +229,15 @@ public class EditAlarm extends Activity {
 		dateButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivityForResult(new Intent(EditAlarm.this, ChooseDate.class), CHOSEDATEREQUESTCODE);
+				if (alarm != null) {
+					Intent intent = new Intent(EditAlarm.this, ChooseDate.class);
+					Bundle b = new Bundle();
+					b.putInt(Keys.ALARMID, alarm.getId());
+					intent.putExtras(b);
+					startActivityForResult(intent, CHOSEDATEREQUESTCODE);
+				} else {
+					startActivityForResult(new Intent(EditAlarm.this, ChooseDate.class), CHOSEDATEREQUESTCODE);
+				}
 			}
 		});
 	}
