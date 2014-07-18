@@ -39,6 +39,8 @@ import fr.robincarozzani.wakeUpCall.view.activities.Utils;
 @SuppressWarnings("deprecation")
 public class ActiveAlarm extends Activity {
 	
+	private static final int progressBarRefreshingTime = 500;
+	
 	private WakeLock wakeLock;
 	private KeyguardLock keyguardLock;
 	
@@ -198,14 +200,18 @@ public class ActiveAlarm extends Activity {
 			@Override
 			public void run() {
 				try {
-					while (mPlayer.getCurrentPosition() < mPlayer.getDuration()) {
+					while (true) {
+						int currentProgress = songPB.getProgress();
+						int remaining = songPB.getMax()-currentProgress;
+						int addProgress = (remaining<progressBarRefreshingTime) ? remaining : progressBarRefreshingTime;
+						final int newProgress = currentProgress+addProgress;
 						mHandler.post(new Runnable() {
 							@Override
 							public void run() {
-								songPB.setProgress(mPlayer.getCurrentPosition());
+								songPB.setProgress(newProgress);
 							}
 						});
-						Thread.sleep(10);
+						Thread.sleep(progressBarRefreshingTime);
 					}
 				} catch (InterruptedException e) {
 					return;
