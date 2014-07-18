@@ -21,4 +21,7 @@ public class Keys {
 	public static final String CODE = "code";
 	public static final String SELECTEDDAYS = "selectedDays";
 	public static final String FILES = "files";
+	
+	public static final String UNIQUE = "unique";
+	public static final String REPEAT = "repeat";
 }

@@ -43,11 +43,11 @@ public class ChooseDate extends Activity {
 	private void createTabs() {
 		tabHost = (TabHost)findViewById(R.id.chooseDateTabHost);
 		tabHost.setup();
-		TabSpec spec = tabHost.newTabSpec("unique");
+		TabSpec spec = tabHost.newTabSpec(Keys.UNIQUE);
 		spec.setIndicator(getResources().getString(R.string.uniqueDate));
 		spec.setContent(R.id.chooseDateTab1);
 		tabHost.addTab(spec);
-		spec = tabHost.newTabSpec("repeat");
+		spec = tabHost.newTabSpec(Keys.REPEAT);
 		spec.setIndicator(getResources().getString(R.string.repeatDate));
 		spec.setContent(R.id.chooseDateTab2);
 		tabHost.addTab(spec);
@@ -120,7 +120,7 @@ public class ChooseDate extends Activity {
 		if (b != null) {
 			Alarm alarm = new Alarm(b.getInt(Keys.ALARMID));
 			if (alarm.hasMultipleDates()) {
-				tabHost.setCurrentTabByTag("repeat");
+				tabHost.setCurrentTabByTag(Keys.REPEAT);
 				boolean[] currentSelectedDays = alarm.getSelectedDays();
 				for (int i=0 ; i<currentSelectedDays.length ; ++i) {
 					if (currentSelectedDays[i]) {
