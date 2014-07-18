@@ -229,15 +229,20 @@ public class EditAlarm extends Activity {
 		dateButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (alarm != null) {
-					Intent intent = new Intent(EditAlarm.this, ChooseDate.class);
+				Intent intent = new Intent(EditAlarm.this, ChooseDate.class);
+				if (dateSelectionMode != NODATECHOSEN) {
 					Bundle b = new Bundle();
-					b.putInt(Keys.ALARMID, alarm.getId());
+					b.putInt(Keys.DATESELECTIONMODE, dateSelectionMode);
+					if (dateSelectionMode == ChooseDate.REPEATDATECODE) {
+						b.putBooleanArray(Keys.REPEAT, selectedDays);
+					} else {
+						b.putInt(Keys.YEAR, uniqueDate.get(Keys.YEAR));
+						b.putInt(Keys.MONTH, uniqueDate.get(Keys.MONTH));
+						b.putInt(Keys.DAY, uniqueDate.get(Keys.DAY));
+					}
 					intent.putExtras(b);
-					startActivityForResult(intent, CHOSEDATEREQUESTCODE);
-				} else {
-					startActivityForResult(new Intent(EditAlarm.this, ChooseDate.class), CHOSEDATEREQUESTCODE);
 				}
+				startActivityForResult(intent, CHOSEDATEREQUESTCODE);
 			}
 		});
 	}

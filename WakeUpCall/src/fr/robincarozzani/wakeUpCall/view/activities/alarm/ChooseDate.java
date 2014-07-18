@@ -1,7 +1,6 @@
 package fr.robincarozzani.wakeUpCall.view.activities.alarm;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,7 +14,6 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 import fr.robincarozzani.wakeUpCall.R;
 import fr.robincarozzani.wakeUpCall.constants.Keys;
-import fr.robincarozzani.wakeUpCall.objects.Alarm;
 import fr.robincarozzani.wakeUpCall.view.activities.Utils;
 
 public class ChooseDate extends Activity {
@@ -118,10 +116,9 @@ public class ChooseDate extends Activity {
 	private void dealWithBundle() {
 		Bundle b = getIntent().getExtras();
 		if (b != null) {
-			Alarm alarm = new Alarm(b.getInt(Keys.ALARMID));
-			if (alarm.hasMultipleDates()) {
+			if (b.getInt(Keys.DATESELECTIONMODE) == REPEATDATECODE) {
 				tabHost.setCurrentTabByTag(Keys.REPEAT);
-				boolean[] currentSelectedDays = alarm.getSelectedDays();
+				boolean[] currentSelectedDays = b.getBooleanArray(Keys.REPEAT);
 				for (int i=0 ; i<currentSelectedDays.length ; ++i) {
 					if (currentSelectedDays[i]) {
 						daysButtons[i].setChecked(true);
@@ -130,10 +127,7 @@ public class ChooseDate extends Activity {
 					}
 				}
 			} else {
-				Date currentSetDate = alarm.getNextActivation();
-				Calendar cal = Calendar.getInstance();
-				cal.setTime(currentSetDate);
-				uniqueDatePicker.updateDate(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
+				uniqueDatePicker.updateDate(b.getInt(Keys.YEAR), b.getInt(Keys.MONTH), b.getInt(Keys.DAY));
 			}
 		}
 	}
