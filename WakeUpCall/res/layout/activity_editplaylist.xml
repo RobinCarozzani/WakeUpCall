@@ -83,6 +83,14 @@
 		android:paddingRight="12dp"
 		android:text="@string/add"
 		android:textColor="#FFFFFF" />
+	
+	<ProgressBar
+	    android:id="@+id/editPlaylistSaveProgressBar"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/editPlaylistSaveButton"
+	    android:layout_alignRight="@+id/editPlaylistSaveButton"
+	    android:layout_alignTop="@+id/editPlaylistSaveButton" />
     
 	<Button
 		android:id="@+id/editPlaylistRemoveAllButton"

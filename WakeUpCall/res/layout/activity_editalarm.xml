@@ -34,6 +34,14 @@
 			android:paddingRight="12dp"
 			android:text="@string/save"
 			android:textColor="#FFFFFF" />
+		
+		<ProgressBar
+		    android:id="@+id/editAlarmSaveProgressBar"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignLeft="@+id/editAlarmSaveButton"
+		    android:layout_alignRight="@+id/editAlarmSaveButton"
+		    android:layout_alignTop="@+id/editAlarmSaveButton" />
 
 		<TextView
 			android:id="@+id/editAlarmNameLabel"
@@ -209,8 +217,6 @@
 			android:layout_height="wrap_content"
 			android:layout_below="@+id/editAlarmTimeLabel"
 			android:layout_centerHorizontal="true" />
-
-		
 
 	</RelativeLayout>
 

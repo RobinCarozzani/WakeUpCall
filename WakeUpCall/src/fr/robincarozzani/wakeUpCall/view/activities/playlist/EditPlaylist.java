@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import fr.robincarozzani.wakeUpCall.R;
 import fr.robincarozzani.wakeUpCall.constants.Keys;
@@ -27,6 +28,7 @@ public class EditPlaylist extends Activity {
 	
 	private EditText nameEditText;
 	private Button saveButton, addButton, removeAllButton;
+	private ProgressBar savePB;
 	private PlaylistAdapter adapter;
 	
 	private Bundle bundle;
@@ -42,6 +44,8 @@ public class EditPlaylist extends Activity {
 		returnIntent = new Intent();
 		playlist = null;
 		nameEditText = (EditText)findViewById(R.id.editPlaylistNameEditText);
+		savePB = (ProgressBar)findViewById(R.id.editPlaylistSaveProgressBar);
+		savePB.setVisibility(View.INVISIBLE);
 		createListView();
 		bundle = getIntent().getExtras();
 		dealWithBundle();
@@ -77,6 +81,8 @@ public class EditPlaylist extends Activity {
 					if (adapter.getCount() == 0) {
 						Toast.makeText(c, getResources().getString(R.string.playlistNoSongs), Toast.LENGTH_SHORT).show();
 					} else {
+						savePB.setVisibility(View.VISIBLE);
+						saveButton.setVisibility(View.INVISIBLE);
 						saveOrUpdate(playlistName);
 						finish();
 					}

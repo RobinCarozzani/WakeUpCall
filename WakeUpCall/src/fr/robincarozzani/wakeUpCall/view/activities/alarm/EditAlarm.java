@@ -18,6 +18,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -37,6 +38,7 @@ public class EditAlarm extends Activity {
 	private final static int CHOSEDATEREQUESTCODE = 2;
 	
 	private Button saveButton, playlistButton, dateButton;
+	private ProgressBar savePB;
 	private EditText alarmNameET, vibrateTimeET;
 	private String alarmNameETContent;
 	private TimePicker timePicker;
@@ -61,6 +63,8 @@ public class EditAlarm extends Activity {
 		dateSelectionMode = NODATECHOSEN;
 		uniqueDate = new HashMap<String, Integer>();
 		selectedDays = new boolean[7];
+		savePB = (ProgressBar)findViewById(R.id.editAlarmSaveProgressBar);
+		savePB.setVisibility(View.INVISIBLE);
 		createEditTexts();
 		createTimePicker();
 		createButtons();
@@ -199,6 +203,8 @@ public class EditAlarm extends Activity {
 						}
 					}
 				}
+				saveButton.setVisibility(View.INVISIBLE);
+				savePB.setVisibility(View.VISIBLE);
 				int hour = timePicker.getCurrentHour();
 				int minute = timePicker.getCurrentMinute();
 				uniqueDate.put(Keys.HOUR, hour);
