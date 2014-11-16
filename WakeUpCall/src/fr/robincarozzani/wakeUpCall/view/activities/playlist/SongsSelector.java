@@ -38,7 +38,6 @@ public class SongsSelector extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_songsselector);
-		getActionBar().hide();
 		selectedFiles = new ArrayList<File>();
 		returnIntent = new Intent();
 		createButtons();

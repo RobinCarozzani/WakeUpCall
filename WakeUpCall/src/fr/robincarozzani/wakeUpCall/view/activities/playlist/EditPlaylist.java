@@ -40,7 +40,6 @@ public class EditPlaylist extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_editplaylist);
-		getActionBar().hide();
 		returnIntent = new Intent();
 		playlist = null;
 		nameEditText = (EditText)findViewById(R.id.editPlaylistNameEditText);

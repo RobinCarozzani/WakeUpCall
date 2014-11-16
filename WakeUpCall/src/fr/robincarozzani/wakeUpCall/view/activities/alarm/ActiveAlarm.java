@@ -67,7 +67,6 @@ public class ActiveAlarm extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_activealarm);
-		getActionBar().hide();
 		Database.create(this);
 		getInfos();
 		createTextViews();

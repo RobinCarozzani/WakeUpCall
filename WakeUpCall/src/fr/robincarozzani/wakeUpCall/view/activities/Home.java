@@ -21,7 +21,6 @@ public class Home extends Activity {
 		super.onCreate(savedInstanceState);
 		Database.create(this);
 		setContentView(R.layout.activity_home);
-		getActionBar().hide();
 		createButtons();
 	}
 	

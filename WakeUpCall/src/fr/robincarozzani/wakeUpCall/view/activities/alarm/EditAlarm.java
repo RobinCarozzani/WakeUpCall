@@ -57,7 +57,6 @@ public class EditAlarm extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_editalarm);
-		getActionBar().hide();
 		alarm = null;
 		playlistId = NOPLAYLISTCHOSEN;
 		dateSelectionMode = NODATECHOSEN;

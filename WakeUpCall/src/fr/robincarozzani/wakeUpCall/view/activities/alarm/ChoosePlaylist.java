@@ -34,7 +34,6 @@ public class ChoosePlaylist extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_chooseplaylist);
-		getActionBar().hide();
 		createButton();
 		adapter = new SimpleAdapter(this, data, android.R.layout.simple_list_item_2,
 									new String[] {Keys.TITLE, Keys.SUBTITLE},

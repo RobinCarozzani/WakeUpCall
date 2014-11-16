@@ -31,7 +31,6 @@ public class ChooseDate extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_choosedate);
-		getActionBar().hide();
 		returnIntent = new Intent();
 		createTabs();
 		createButtons();
