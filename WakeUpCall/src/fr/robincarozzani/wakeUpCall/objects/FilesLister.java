@@ -9,7 +9,7 @@ import fr.robincarozzani.wakeUpCall.view.listAdapters.playlist.FileListAdapter;
 
 public class FilesLister {
 	
-	private final static String STARTPATH = "/";
+	private final static String STARTPATH = "/storage";
 	
 	private File f;
 	
