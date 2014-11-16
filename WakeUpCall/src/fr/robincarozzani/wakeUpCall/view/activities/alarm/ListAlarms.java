@@ -117,6 +117,7 @@ public class ListAlarms extends Activity {
             	if (toRemove.isActivated())
             		AlarmManagerHelper.cancelAlarm(ListAlarms.this, toRemove);
             	removeFromDB(toRemove.getId());
+            	Utils.setNotification(ListAlarms.this);
             }
         })
         .setNegativeButton(R.string.no, null)
