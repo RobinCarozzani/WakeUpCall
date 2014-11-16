@@ -86,7 +86,7 @@ public class ListAlarms extends Activity {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 				removeItem(adapter.getItem(position));
-				return false;
+				return true;
 			}
 		});		
 		loadListView();

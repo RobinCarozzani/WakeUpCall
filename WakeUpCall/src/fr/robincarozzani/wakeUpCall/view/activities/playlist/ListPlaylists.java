@@ -88,7 +88,7 @@ public class ListPlaylists extends Activity {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 				removeItem(position);
-				return false;
+				return true;
 			}
 		});
 	}
