@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- *** GENERAL *** -->
+    <string name="app_name">Wake Up Call</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="confirmation_title">Confirmation</string>
+    <string name="confirmation_delete">Voulez-vous vraiment supprimer ça ?</string>
+    
+    <!-- HOME -->
+    <string name="homeAlarmsButtonText">Alarmes</string>
+    <string name="homePlaylistsButtonText">Playlists</string>
+    
+    
+    <!-- *** ALARM *** -->
+    
+    <!-- LIST ALARMS -->
+    <string name="listAlarmsNewAlarmButtonText">Nouvelle alarme</string>
+    <string name="next">Prochain</string>
+    <string name="notActivated">(pas activée)</string>
+    <string name="activationNotAllowed">Vous ne pouvez pas activer cette alarme car elle a une date dans le passé</string>
+    <string name="nextAlarm">Prochaine alarme :</string>
+    
+    <!-- EDIT ALARM -->
+    <string name="alarm">Alarme</string>
+    <string name="nameOfTheAlarm">Nom de l\'alarme</string>
+    <string name="choose">Choisir</string>
+    <string name="date">Date</string>
+    <string name="time">Heure</string>
+    <string name="repeat">En boucle</string>
+    <string name="vibrate">Vibreur</string>
+    <string name="after">Après</string>
+    <string name="alarmNameEmpty">Vous ne pouvez pas enregistrer une alarme sans nom</string>
+    <string name="noPlaylistChosen">Vous ne pouvez pas enregistrer une alarme sans playlist</string>
+    <string name="noDateChosen">Vous ne pouvez pas enregistrer une alarme sans date</string>
+    <string name="alarmIn">Alarme dans</string>
+    <string name="years">ans</string>
+    <string name="year">an</string>
+    <string name="months">mois</string>
+    <string name="month">mois</string>
+    <string name="days">jours</string>
+    <string name="day">jour</string>
+    <string name="hours">heures</string>
+    <string name="hour">heure</string>
+    <string name="minutes">minutes</string>
+    <string name="minute">minute</string>
+    <string name="seconds">secondes</string>
+    <string name="second">seconde</string>
+    
+    <!-- CHOOSE PLAYLIST -->
+    <string name="playlists">Playlists</string>
+    
+    <!-- CHOOSE DATE -->
+    <string name="uniqueDate">Unique</string>
+    <string name="repeatDate">Récurrente</string>
+    <string name="monday">Lundi</string>
+    <string name="tuesday">Mardi</string>
+    <string name="wednesday">Mercredi</string>
+    <string name="thursday">Jeudi</string>
+    <string name="friday">Vendredi</string>
+    <string name="saturday">Samedi</string>
+    <string name="sunday">Dimanche</string>
+    <string name="pastDate">Vous ne pouvez pas utiliser une date passée</string>
+    
+    <!-- ACTIVE ALARM -->
+    <string name="dismiss">Eteindre</string>
+
+
+    
+    <!-- *** PLAYLIST *** -->
+    
+    <!-- LIST PLAYLISTS -->
+    <string name="listPlaylistsNewPlaylistButtonText">Nouvelle playlist</string>
+    <string name="song">Musique</string>
+    <string name="songs">Musiques</string>
+    <string name="playlistUsedIn">Cette playlist est utilisée par</string>
+    <string name="alarmsSingular">alarme</string>
+    <string name="alarmsPlural">alarmes</string>
+    <string name="deleteAlarmSingular">Voulez-vous supprimer cette alarme ?</string>
+    <string name="deleteAlarmsPlural">Voulez-vous supprimer ces alarmes ?</string>
+    
+    <!-- EDIT PLAYLIST -->
+    <string name="playlist">Playlist</string>
+    <string name="save">Enregistrer</string>
+    <string name="name">Nom</string>
+    <string name="nameOfThePlaylist">Nom de la playlist</string>
+    <string name="add">Ajouter</string>
+    <string name="removeAll">Tout enlever</string>
+    <string name="playlistNameEmpty">Vous ne pouvez pas enregistrer une playlist sans nom</string>
+    <string name="playlistNoSongs">Vous ne pouvez pas enregistrer une playlist sans musique</string>
+    <string name="playlistSaved">La playlist est enregistrée</string>
+    <string name="unknownArtist">Artiste inconnu</string>
+    
+    <!-- SONGS SELECTOR -->
+    <string name="songsSelectorInstruction">Cliquez sur un fichier pour l\'ajouter</string>
+    <string name="songsSelectorAddAllFilesFromDirectory">Ajouter tous les fichiers du dossier courant</string>
+    <string name="done">Terminé</string>
+    <string name="noFilesFound">Aucun fichier supporté n\'a été trouvé dans ce dossier</string>
+    <string name="oneFileAdded">1 fichier ajouté à la playlist</string>
+    <string name="manyFilesAdded">fichiers ajoutés à la playlist</string>
+    <string name="thisFileAdded">Fichier ajouté</string>
+
+</resources>
