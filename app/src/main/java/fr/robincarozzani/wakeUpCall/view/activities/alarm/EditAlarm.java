@@ -253,7 +253,6 @@ public class EditAlarm extends Activity {
 	}
 	
 	private void createTimePicker() {
-		String clockType = android.provider.Settings.System.getString(getContentResolver(), android.provider.Settings.System.TIME_12_24);
 		timePicker = (TimePicker)findViewById(R.id.editAlarmTimePicker);
 		timePicker.setIs24HourView(android.text.format.DateFormat.is24HourFormat(this));
 		Calendar c = Calendar.getInstance();
